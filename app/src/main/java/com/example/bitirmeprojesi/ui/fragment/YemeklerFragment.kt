@@ -5,12 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import com.example.bitirmeprojesi.R
 import com.example.bitirmeprojesi.databinding.FragmentYemeklerBinding
 import com.example.bitirmeprojesi.ui.adapter.YemeklerAdapter
 import com.example.bitirmeprojesi.ui.viewmodel.YemeklerViewModel
+import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

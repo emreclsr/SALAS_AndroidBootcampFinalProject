@@ -9,6 +9,7 @@ import com.example.bitirmeprojesi.R
 import com.example.bitirmeprojesi.data.entity.Yemekler
 import com.example.bitirmeprojesi.databinding.YemekCardTasarimBinding
 import com.example.bitirmeprojesi.ui.viewmodel.YemeklerViewModel
+import com.squareup.picasso.Picasso
 
 // 1. Parametre tanımla
 class YemeklerAdapter(var mContext: Context,

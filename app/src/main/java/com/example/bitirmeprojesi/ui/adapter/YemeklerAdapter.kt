@@ -4,11 +4,14 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bitirmeprojesi.R
 import com.example.bitirmeprojesi.data.entity.Yemekler
 import com.example.bitirmeprojesi.databinding.YemekCardTasarimBinding
+import com.example.bitirmeprojesi.ui.fragment.YemeklerFragmentDirections
 import com.example.bitirmeprojesi.ui.viewmodel.YemeklerViewModel
+import com.example.bitirmeprojesi.utils.gecisYap
 import com.squareup.picasso.Picasso
 
 // 1. Parametre tanımla
@@ -36,7 +39,8 @@ class YemeklerAdapter(var mContext: Context,
         t.yemekNesnesi = yemek
 
         t.yemekCard.setOnClickListener {
-            // TODO: Sayfa geçişi eklenecek.
+            val gecis = YemeklerFragmentDirections.yemekDetayGecis(yemek=yemek)
+            Navigation.gecisYap(it, gecis)
         }
     }
 

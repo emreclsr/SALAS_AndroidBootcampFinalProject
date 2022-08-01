@@ -2,10 +2,25 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/navigation"
-    app:startDestination="@id/yemeklerFragment">
+    app:startDestination="@id/yemeklerFragment"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <fragment
         android:id="@+id/yemeklerFragment"
         android:name="com.example.bitirmeprojesi.ui.fragment.YemeklerFragment"
-        android:label="YemeklerFragment" />
+        android:label="YemeklerFragment"
+        tools:layout="@layout/fragment_yemekler">
+        <action
+            android:id="@+id/yemekDetayGecis"
+            app:destination="@id/yemekDetayFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/yemekDetayFragment"
+        android:name="com.example.bitirmeprojesi.ui.fragment.YemekDetayFragment"
+        android:label="YemekDetayFragment"
+        tools:layout="@layout/fragment_yemek_detay">
+        <argument
+            android:name="yemek"
+            app:argType="com.example.bitirmeprojesi.data.entity.Yemekler" />
+    </fragment>
 </navigation>

@@ -7,6 +7,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class YemekDetayViewModel @Inject constructor(var yemekrepo: YemeklerDaoRepository): ViewModel(){
-    fun sepeteEkle(yemek_id:Int, yemek_adi:String, yemek_resim_adi:String, yemek_fiyat:String){
+    fun sepeteEkle(yemek_adi:String, yemek_resim_adi:String, yemek_fiyat:Int, yemek_siparis_adet:Int){
+        yemekrepo.sepeteYemekEkle(yemek_adi, yemek_resim_adi, yemek_fiyat, yemek_siparis_adet)
     }
 }

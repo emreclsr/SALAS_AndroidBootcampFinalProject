@@ -8,8 +8,8 @@
         <variable name="yemekDetayToolbarBaslik" type="String" />
         <variable name="yemekDetayFragment" type="com.example.bitirmeprojesi.ui.fragment.YemekDetayFragment" />
         <variable name="yemekDetayNesnesi" type="com.example.bitirmeprojesi.data.entity.Yemekler" />
-        <variable name="adet" type="String" />
-        <variable name="fiyat" type="String" />
+        <variable name="adet" type="Integer" />
+        <variable name="fiyat" type="Integer" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -50,8 +50,8 @@
             android:layout_marginTop="70dp"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:text="+"
             android:onClick="@{() -> yemekDetayFragment.buttonArtır()}"
+            android:text="+"
             android:textSize="34sp"
             app:layout_constraintStart_toEndOf="@+id/textViewAdet"
             app:layout_constraintTop_toBottomOf="@+id/textViewDetayYemekAdi" />
@@ -61,7 +61,7 @@
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_marginTop="70dp"
-            android:text="@{adet}"
+            android:text="@{adet.toString()}"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="34sp"
@@ -74,10 +74,10 @@
             android:layout_height="50dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="70dp"
-            android:insetTop="0dp"
+            android:insetTop="5dp"
             android:insetBottom="0dp"
-            android:text="-"
             android:onClick="@{() -> yemekDetayFragment.buttonAzalt()}"
+            android:text="-"
             android:textSize="34sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewDetayYemekAdi" />
@@ -88,7 +88,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="70dp"
             android:layout_marginEnd="30dp"
-            android:text="@{fiyat}"
+            android:text='@{fiyat.toString() + " ₺"}'
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="34dp"
@@ -103,6 +103,7 @@
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:text="SEPETE EKLE"
+            android:onClick="@{() -> yemekDetayFragment.sepeteEkle(yemekDetayNesnesi.yemek_adi, yemekDetayNesnesi.yemek_resim_adi, fiyat, adet)}"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"

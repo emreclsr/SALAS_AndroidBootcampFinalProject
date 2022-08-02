@@ -11,8 +11,10 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.bitirmeprojesi.databinding.FragmentYemekDetayBinding
 import com.example.bitirmeprojesi.ui.viewmodel.YemekDetayViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class YemekDetayFragment : Fragment() {
     private lateinit var tasarim: FragmentYemekDetayBinding
     private lateinit var viewModel: YemekDetayViewModel
@@ -26,23 +28,34 @@ class YemekDetayFragment : Fragment() {
         val gelenYemek = bundle.yemek
         tasarim.yemekDetayNesnesi = gelenYemek
 
-        tasarim.adet = "1"
-        tasarim.fiyat = "${gelenYemek.yemek_fiyat} ₺"
+        tasarim.adet = 1
+        tasarim.fiyat = gelenYemek.yemek_fiyat.toInt()
 
         return tasarim.root
     }
 
 
     fun buttonArtır(){
-        tasarim.adet = (tasarim.adet!!.toInt() + 1).toString()
+        tasarim.adet = tasarim.adet!! + 1
 
-        tasarim.fiyat = "${(tasarim.adet!!.toInt()*tasarim.yemekDetayNesnesi!!.yemek_fiyat.toInt())} ₺"
+        tasarim.fiyat = tasarim.adet!!*tasarim.yemekDetayNesnesi!!.yemek_fiyat.toInt()
     }
     fun buttonAzalt(){
-        if (tasarim.adet!!.toInt() > 1) {
-            tasarim.adet = (tasarim.adet!!.toInt() - 1).toString()
+        if (tasarim.adet!! > 1) {
+            tasarim.adet = tasarim.adet!! - 1
 
-            tasarim.fiyat = "${(tasarim.adet!!.toInt() * tasarim.yemekDetayNesnesi!!.yemek_fiyat.toInt())} ₺"
+            tasarim.fiyat = tasarim.adet!!.toInt() * tasarim.yemekDetayNesnesi!!.yemek_fiyat.toInt()
         }
     }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val tempViewModel:YemekDetayViewModel by viewModels()
+        viewModel = tempViewModel
+    }
+
+    fun sepeteEkle(yemek_adi:String, yemek_resim_adi:String, yemek_fiyat:Int, yemek_siparis_adet:Int){
+        viewModel.sepeteEkle(yemek_adi, yemek_resim_adi, yemek_fiyat, yemek_siparis_adet)
+    }
+
 }

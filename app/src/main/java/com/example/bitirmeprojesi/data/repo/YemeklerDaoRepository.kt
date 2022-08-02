@@ -1,6 +1,7 @@
 package com.example.bitirmeprojesi.data.repo
 
 import androidx.lifecycle.MutableLiveData
+import com.example.bitirmeprojesi.data.entity.SepetYemeklerCevap
 import com.example.bitirmeprojesi.data.entity.Yemekler
 import com.example.bitirmeprojesi.data.entity.YemeklerCevap
 import com.example.bitirmeprojesi.retrofit.YemeklerDao
@@ -27,6 +28,13 @@ class YemeklerDaoRepository(var yemekdao: YemeklerDao) {
             }
 
             override fun onFailure(call: Call<YemeklerCevap>?, t: Throwable?) {}
+        })
+    }
+
+    fun sepeteYemekEkle(yemek_adi:String, yemek_resim_adi:String, yemek_fiyat:Int, yemek_siparis_adet:Int){
+        yemekdao.sepeteYemekEkle(yemek_adi, yemek_resim_adi, yemek_fiyat, yemek_siparis_adet, "emreclsr").enqueue(object:Callback<SepetYemeklerCevap>{
+            override fun onResponse(call: Call<SepetYemeklerCevap>?, response: Response<SepetYemeklerCevap>?) {}
+            override fun onFailure(call: Call<SepetYemeklerCevap>?, t: Throwable?) {}
         })
     }
 }

@@ -1,18 +1,18 @@
 package com.example.bitirmeprojesi.ui.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.bitirmeprojesi.R
-import com.example.bitirmeprojesi.data.entity.SepetYemeklerCevap
+import com.example.bitirmeprojesi.data.entity.SepetYemekler
 import com.example.bitirmeprojesi.databinding.SepetCardTasarimBinding
 import com.example.bitirmeprojesi.ui.viewmodel.SepetViewModel
 
 // 1. Parametre tanımla
 class SepetYemekAdapter(var mContext:Context,
-                        var sepetYemekListesi:List<SepetYemeklerCevap>,
+                        var sepetYemekListesi:List<SepetYemekler>,
                         var viewModel:SepetViewModel) : RecyclerView.Adapter<SepetYemekAdapter.SepetCardTasarimTutucu>(){
 
     inner class SepetCardTasarimTutucu(tasarim: SepetCardTasarimBinding) : RecyclerView.ViewHolder(tasarim.root){
@@ -24,7 +24,7 @@ class SepetYemekAdapter(var mContext:Context,
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SepetCardTasarimTutucu {
         val layoutInflater = LayoutInflater.from(mContext)
-        val tasarim: SepetCardTasarimBinding = DataBindingUtil.inflate(layoutInflater, R.layout.sepet_card_tasarim, parent, false)
+        val tasarim = SepetCardTasarimBinding.inflate(layoutInflater, parent, false)
         return SepetCardTasarimTutucu(tasarim)
     }
 

@@ -23,4 +23,10 @@
             android:name="yemek"
             app:argType="com.example.bitirmeprojesi.data.entity.Yemekler" />
     </fragment>
+    <fragment
+        android:id="@+id/sepetFragment"
+        android:name="com.example.bitirmeprojesi.ui.fragment.SepetFragment"
+        android:label="SepetFragment"
+        tools:layout="@layout/fragment_sepet"/>
+
 </navigation>

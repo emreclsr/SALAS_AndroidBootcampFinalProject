@@ -29,7 +29,7 @@ class YemeklerAdapter(var mContext: Context,
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): YemekCardTasatimTutucu {
         val layoutInflater = LayoutInflater.from(mContext)
-        val tasarim:YemekCardTasarimBinding = DataBindingUtil.inflate(layoutInflater, R.layout.yemek_card_tasarim, parent, false)
+        val tasarim = YemekCardTasarimBinding.inflate(layoutInflater, parent, false)
         return YemekCardTasatimTutucu(tasarim) // 5. Card tasarim için view binding kurulumu
     }
 

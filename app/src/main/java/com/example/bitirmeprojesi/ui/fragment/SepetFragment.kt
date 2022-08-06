@@ -23,7 +23,7 @@ class SepetFragment : Fragment() {
 
         tasarim.sepetToolbarBaslik = "Sepetim"
 
-        viewModel.sepetYemekListesi.observe(viewLifecycleOwner){
+        viewModel.sepetYemeklerListesi.observe(viewLifecycleOwner){
             val adapterSepet = SepetYemekAdapter(requireContext(), it, viewModel)
             tasarim.sepetYemekAdapter = adapterSepet
         }

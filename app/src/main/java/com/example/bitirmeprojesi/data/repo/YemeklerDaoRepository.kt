@@ -8,9 +8,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class YemeklerDaoRepository(var yemekdao: YemeklerDao) {
+class YemeklerDaoRepository(var yemekdao:YemeklerDao) {
     var yemeklerListesi:MutableLiveData<List<Yemekler>>
-    var sepetYemekListesi: MutableLiveData<List<SepetYemekler>>
+    var sepetYemekListesi:MutableLiveData<List<SepetYemekler>>
 
     init{
         yemeklerListesi = MutableLiveData()
@@ -41,7 +41,7 @@ class YemeklerDaoRepository(var yemekdao: YemeklerDao) {
             override fun onResponse(call: Call<CRUDCevap>?, response: Response<CRUDCevap>) {
                 val basari = response.body().success
                 val mesaj = response.body().message
-                Log.e("testyazisi", "$basari - $mesaj - $kullanici_adi - $yemek_adi")
+                Log.e("testyazisi yemeklerdaorepository sepetyemekekle", "$basari - $mesaj - $kullanici_adi - $yemek_adi")
             }
             override fun onFailure(call: Call<CRUDCevap>?, t: Throwable?) {}
         })
@@ -53,7 +53,7 @@ class YemeklerDaoRepository(var yemekdao: YemeklerDao) {
                 val sepetListe = response.body().sepet_yemekler
                 val basari = response.body().success
                 sepetYemekListesi.value = sepetListe
-                Log.e("testyazisi yemeklerdaorepository", "$basari - $sepetListe - ${sepetYemekListesi.value}")
+                Log.e("testyazisi yemeklerdaorepository sepetyemekleral", "$basari - $sepetListe")
             }
             override fun onFailure(call: Call<SepetYemeklerCevap>?, t: Throwable?) {}
         })

@@ -21,7 +21,17 @@ interface YemeklerDao {
                         @Field("yemek_siparis_adet") yemek_siparis_adet:Int,
                         @Field("kullanici_adi") kullanici_adi:String) : Call<CRUDCevap>
 
+
+
     @POST("yemekler/sepettekiYemekleriGetir.php")
     @FormUrlEncoded
-    fun sepetYemeklerAl(@Field("kullanici_adi") kullanici_adi: String) : Call<SepetYemeklerCevap>
+    fun sepetGoster(@Field("kullanici_adi") kullanici_adi: String) : Call<SepetYemeklerCevap>
+
+
+
+    @POST("yemekler/sepettenYemekSil.php")
+    @FormUrlEncoded
+    fun sepetYemekSil(@Field("sepet_yemek_id") sepet_yemek_id: Int,
+                      @Field("kullanici_adi") kullanici_adi: String) : Call<CRUDCevap>
+
 }

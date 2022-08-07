@@ -4,9 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"/>
+        <variable name="sepetToolbarBaslik" type="String" />
         <variable name="sepetFragment" type="com.example.bitirmeprojesi.ui.fragment.SepetFragment" />
-        <variable name="sepetToolbarBaslik" type="String"/>
-        <variable name="sepetYemekAdapter" type="com.example.bitirmeprojesi.ui.adapter.SepetYemekAdapter" />
+        <variable name="sepetYemeklerAdapter" type="com.example.bitirmeprojesi.ui.adapter.SepetYemeklerAdapter" />
+        <variable name="rvVisibility" type="Boolean" />
+        <variable name="toplamTutar" type="Integer" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,7 +19,6 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarSepet"
-            app:title="@{sepetToolbarBaslik}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
@@ -24,31 +26,87 @@
             android:theme="?attr/actionBarTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="@{sepetToolbarBaslik}" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvSepetYemekler"
+            android:id="@+id/recyclerViewSepetYemekler"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginBottom="200dp"
-            android:adapter="@{sepetYemekAdapter}"
+            android:adapter="@{sepetYemeklerAdapter}"
+            android:visibility="@{rvVisibility ? View.VISIBLE : View.GONE}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarSepet"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textViewBosSepet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SEPETİNİZDE\nÜRÜN YOK"
+            android:textAlignment="center"
+            android:textSize="40sp"
+            android:visibility="@{rvVisibility ? View.GONE : View.VISIBLE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbarSepet" />
 
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="60dp"
+            android:background="@color/purple_500"
+            android:visibility="@{rvVisibility ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:text="SEPET YAZISI"
-            android:textColor="@color/black"
-            android:textSize="34sp"
+            android:layout_marginStart="48dp"
+            android:text="Toplam Tutar:"
+            android:visibility="@{rvVisibility ? View.VISIBLE : View.GONE}"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/divider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/divider" />
+
+        <TextView
+            android:id="@+id/textViewToplamTutar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="48dp"
+            android:visibility="@{rvVisibility ? View.VISIBLE : View.GONE}"
+            android:text='@{toplamTutar.toString() + " ₺"}'
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/divider" />
+
+        <Button
+            android:id="@+id/buttonSepetiOnayla"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:visibility="@{rvVisibility ? View.VISIBLE : View.GONE}"
+            android:text="SEPETİ ONAYLA"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rvSepetYemekler" />
+            app:layout_constraintTop_toBottomOf="@+id/divider" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

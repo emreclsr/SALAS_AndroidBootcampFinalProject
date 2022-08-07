@@ -28,5 +28,10 @@
         android:name="com.example.bitirmeprojesi.ui.fragment.SepetFragment"
         android:label="SepetFragment"
         tools:layout="@layout/fragment_sepet"/>
+    <fragment
+        android:id="@+id/hesapFragment"
+        android:name="com.example.bitirmeprojesi.ui.fragment.HesapFragment"
+        android:label="HesapFragment"
+        tools:layout="@layout/fragment_hesap"/>
 
 </navigation>

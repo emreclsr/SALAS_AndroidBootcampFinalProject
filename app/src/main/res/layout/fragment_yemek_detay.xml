@@ -14,7 +14,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context=".ui.fragment.YemekDetayFragment">
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -33,7 +33,7 @@
             android:id="@+id/textViewDetayYemekAdi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="40dp"
             android:lineSpacingExtra="14sp"
             android:text="@{yemekDetayNesnesi.yemek_adi}"
             android:textColor="@color/black"
@@ -47,7 +47,7 @@
             android:id="@+id/buttonArtır"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="50dp"
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:onClick="@{() -> yemekDetayFragment.buttonArtır()}"
@@ -60,7 +60,7 @@
             android:id="@+id/textViewAdet"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="50dp"
             android:text="@{adet.toString()}"
             android:textAlignment="center"
             android:textColor="@color/black"
@@ -73,8 +73,8 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="70dp"
-            android:insetTop="5dp"
+            android:layout_marginTop="50dp"
+            android:insetTop="0dp"
             android:insetBottom="0dp"
             android:onClick="@{() -> yemekDetayFragment.buttonAzalt()}"
             android:text="-"
@@ -86,7 +86,7 @@
             android:id="@+id/textViewFiyat"
             android:layout_width="120dp"
             android:layout_height="50dp"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="30dp"
             android:text='@{fiyat.toString() + " ₺"}'
             android:textAlignment="center"
@@ -99,7 +99,7 @@
             android:id="@+id/buttonSepeteEkle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="50dp"
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:onClick='@{() -> yemekDetayFragment.sepeteEkle(yemekDetayNesnesi.yemek_adi, yemekDetayNesnesi.yemek_resim_adi, fiyat, adet, "emreclsr")}'

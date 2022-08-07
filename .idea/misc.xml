@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/emrec/Desktop/github/AndroidBitirmeProjesi/app/src/main/res/drawable/test_resim.xml" value="0.221" />
         <entry key="..\:/Users/emrec/Desktop/github/AndroidBitirmeProjesi/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/emrec/Desktop/github/AndroidBitirmeProjesi/app/src/main/res/layout/fragment_sepet.xml" value="0.24444444444444444" />
+        <entry key="..\:/Users/emrec/Desktop/github/AndroidBitirmeProjesi/app/src/main/res/layout/card_tasarim_sepet.xml" value="0.5" />
+        <entry key="..\:/Users/emrec/Desktop/github/AndroidBitirmeProjesi/app/src/main/res/layout/fragment_hesap.xml" value="0.24444444444444444" />
+        <entry key="..\:/Users/emrec/Desktop/github/AndroidBitirmeProjesi/app/src/main/res/layout/fragment_sepet.xml" value="0.25" />
         <entry key="..\:/Users/emrec/Desktop/github/AndroidBitirmeProjesi/app/src/main/res/layout/fragment_yemek_detay.xml" value="0.22" />
         <entry key="..\:/Users/emrec/Desktop/github/AndroidBitirmeProjesi/app/src/main/res/layout/fragment_yemekler.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/emrec/Desktop/github/AndroidBitirmeProjesi/app/src/main/res/layout/sepet_card_tasarim.xml" value="0.26284722222222223" />

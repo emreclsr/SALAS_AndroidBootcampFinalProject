@@ -7,22 +7,23 @@ import com.example.bitirmeprojesi.retrofit.YemeklerDao
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.EOFException
 
 class YemeklerDaoRepository(var yemekdao:YemeklerDao) {
     var yemeklerListesi:MutableLiveData<List<Yemekler>>
-    var sepetYemekListesi:MutableLiveData<List<SepetYemekler>>
+    var sepetYemeklerListesi:MutableLiveData<List<SepetYemekler>>
 
     init{
         yemeklerListesi = MutableLiveData()
-        sepetYemekListesi = MutableLiveData()
+        sepetYemeklerListesi = MutableLiveData()
     }
 
     fun yemekleriGetir() : MutableLiveData<List<Yemekler>>{
         return yemeklerListesi
     }
 
-    fun sepetYemeklerGetir() : MutableLiveData<List<SepetYemekler>>{
-        return sepetYemekListesi
+    fun sepetYemekleriGetir() : MutableLiveData<List<SepetYemekler>>{
+        return sepetYemeklerListesi
     }
 
     fun tumYemekleriAl(){
@@ -39,23 +40,32 @@ class YemeklerDaoRepository(var yemekdao:YemeklerDao) {
     fun sepeteYemekEkle(yemek_adi:String, yemek_resim_adi:String, yemek_fiyat:Int, yemek_siparis_adet:Int, kullanici_adi: String){
         yemekdao.sepeteYemekEkle(yemek_adi, yemek_resim_adi, yemek_fiyat, yemek_siparis_adet, kullanici_adi).enqueue(object:Callback<CRUDCevap>{
             override fun onResponse(call: Call<CRUDCevap>?, response: Response<CRUDCevap>) {
-                val basari = response.body().success
-                val mesaj = response.body().message
-                Log.e("testyazisi yemeklerdaorepository sepetyemekekle", "$basari - $mesaj - $kullanici_adi - $yemek_adi")
+                tumSepetYemekleriAl(kullanici_adi)
             }
             override fun onFailure(call: Call<CRUDCevap>?, t: Throwable?) {}
         })
     }
 
-    fun sepetYemeklerAl(kullanici_adi:String){
-        yemekdao.sepetYemeklerAl(kullanici_adi).enqueue(object:Callback<SepetYemeklerCevap>{
+    fun tumSepetYemekleriAl(kullanici_adi: String) {
+        yemekdao.sepetGoster(kullanici_adi).enqueue(object: Callback<SepetYemeklerCevap>{
             override fun onResponse(call: Call<SepetYemeklerCevap>?, response: Response<SepetYemeklerCevap>) {
                 val sepetListe = response.body().sepet_yemekler
-                val basari = response.body().success
-                sepetYemekListesi.value = sepetListe
-                Log.e("testyazisi yemeklerdaorepository sepetyemekleral", "$basari - $sepetListe")
+                sepetYemeklerListesi.value = sepetListe
             }
-            override fun onFailure(call: Call<SepetYemeklerCevap>?, t: Throwable?) {}
+            override fun onFailure(call: Call<SepetYemeklerCevap>?, t: Throwable?) {
+                sepetYemeklerListesi.value = listOf()
+            }
         })
+    }
+
+    fun sepetYemekSil(sepet_yemek_id: Int, kullanici_adi: String) {
+        yemekdao.sepetYemekSil(sepet_yemek_id, kullanici_adi).enqueue(object : Callback<CRUDCevap> {
+                override fun onResponse(call: Call<CRUDCevap>?, response: Response<CRUDCevap>) {
+                    val basari = response.body().success
+                    val mesaj = response.body().message
+                    tumSepetYemekleriAl(kullanici_adi)
+                }
+                override fun onFailure(call: Call<CRUDCevap>?, t: Throwable?) {}
+            })
     }
 }

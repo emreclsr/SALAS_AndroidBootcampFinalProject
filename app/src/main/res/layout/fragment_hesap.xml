@@ -4,10 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="hesapToolbarBaslik" type="String" />
-        <variable
-            name="hesapFragment"
-            type="com.example.bitirmeprojesi.ui.fragment.HesapFragment" />
+        <variable name="hesapFragment" type="com.example.bitirmeprojesi.ui.fragment.HesapFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,13 +28,26 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarHesap"
             android:layout_width="0dp"
-            app:title="@{hesapToolbarBaslik}"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/dancing_script"
+            android:text="S A L A Ş"
+            android:textColor="@color/white"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/toolbarHesap"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/toolbarHesap"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="yemekDetayToolbarBaslik" type="String" />
         <variable name="yemekDetayFragment" type="com.example.bitirmeprojesi.ui.fragment.YemekDetayFragment" />
         <variable name="yemekDetayNesnesi" type="com.example.bitirmeprojesi.data.entity.Yemekler" />
         <variable name="adet" type="Integer" />
@@ -14,7 +13,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         tools:context=".ui.fragment.YemekDetayFragment">
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -33,7 +32,7 @@
             android:id="@+id/textViewDetayYemekAdi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
             android:lineSpacingExtra="14sp"
             android:text="@{yemekDetayNesnesi.yemek_adi}"
             android:textColor="@color/black"
@@ -47,40 +46,45 @@
             android:id="@+id/buttonArtır"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_marginStart="80dp"
             android:layout_marginTop="50dp"
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:onClick="@{() -> yemekDetayFragment.buttonArtır()}"
             android:text="+"
             android:textSize="34sp"
-            app:layout_constraintStart_toEndOf="@+id/textViewAdet"
-            app:layout_constraintTop_toBottomOf="@+id/textViewDetayYemekAdi" />
+            app:cornerRadius="20dp"
+            app:layout_constraintStart_toStartOf="@+id/textViewAdet"
+            app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
         <TextView
             android:id="@+id/textViewAdet"
             android:layout_width="100dp"
             android:layout_height="50dp"
+            android:layout_marginStart="70dp"
             android:layout_marginTop="50dp"
+            android:background="@color/anaKırmızı"
             android:text="@{adet.toString()}"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="34sp"
-            app:layout_constraintStart_toEndOf="@+id/buttonEksilt"
-            app:layout_constraintTop_toBottomOf="@+id/textViewDetayYemekAdi" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
         <Button
             android:id="@+id/buttonEksilt"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginStart="30dp"
             android:layout_marginTop="50dp"
+            android:layout_marginEnd="80dp"
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:onClick="@{() -> yemekDetayFragment.buttonAzalt()}"
             android:text="-"
             android:textSize="34sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewDetayYemekAdi" />
+            app:cornerRadius="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/textViewAdet"
+            app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
         <TextView
             android:id="@+id/textViewFiyat"
@@ -93,22 +97,25 @@
             android:textColor="@color/black"
             android:textSize="34dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewDetayYemekAdi" />
+            app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
         <Button
             android:id="@+id/buttonSepeteEkle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="20dp"
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:onClick='@{() -> yemekDetayFragment.sepeteEkle(yemekDetayNesnesi.yemek_adi, yemekDetayNesnesi.yemek_resim_adi, fiyat, adet, "emreclsr")}'
             android:text="SEPETE EKLE"
-            android:textSize="20sp"
+            android:textSize="24sp"
+            app:cornerRadius="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonArtır" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarYemekDetay"
@@ -119,8 +126,45 @@
             android:theme="?attr/actionBarTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:title="@{yemekDetayToolbarBaslik}" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/dancing_script"
+            android:text="S A L A Ş"
+            android:textColor="@color/white"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/toolbarYemekDetay"
+            binding:layout_constraintEnd_toEndOf="parent"
+            binding:layout_constraintStart_toStartOf="parent"
+            binding:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="40dp"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit Mauris ultricies nulla viverra fermentum luctus. Donec sit amet urna semper,"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDetayYemekAdi"
+            binding:layout_constraintEnd_toEndOf="parent"
+            binding:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageViewGeriDon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
+            android:onClick="@{() -> yemekDetayFragment.geriDon()}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarYemekDetay"
+            binding:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

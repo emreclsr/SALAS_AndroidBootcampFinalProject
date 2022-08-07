@@ -25,7 +25,11 @@ class YemekDetayFragment : Fragment() {
         tasarim = DataBindingUtil.inflate(inflater, com.example.bitirmeprojesi.R.layout.fragment_yemek_detay, container, false)
         tasarim.yemekDetayFragment = this
 
-        tasarim.yemekDetayToolbarBaslik = "Yemek Detayı"
+        // Hide navigation bar
+        activity!!.window.decorView.systemUiVisibility = (
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
+
 
         val bundle:YemekDetayFragmentArgs by navArgs()
         val gelenYemek = bundle.yemek
@@ -83,5 +87,10 @@ class YemekDetayFragment : Fragment() {
             }
             viewModel.sepeteEkle(yemek_adi, yemek_resim_adi, yemek_fiyat, yemek_siparis_adet, kullanici_adi)
         }
+        activity?.onBackPressed()
+    }
+
+    fun geriDon(){
+        activity?.onBackPressed()
     }
 }

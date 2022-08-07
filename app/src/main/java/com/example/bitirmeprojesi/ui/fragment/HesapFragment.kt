@@ -17,7 +17,11 @@ class HesapFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         tasarim = DataBindingUtil.inflate(inflater, R.layout.fragment_hesap, container, false)
         tasarim.hesapFragment = this
-        tasarim.hesapToolbarBaslik = "Hesabım"
+
+        // Hide navigation bar
+        activity!!.window.decorView.systemUiVisibility = (
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
 
         return tasarim.root
     }

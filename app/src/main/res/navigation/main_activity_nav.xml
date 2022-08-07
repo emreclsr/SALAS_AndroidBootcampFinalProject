@@ -27,11 +27,24 @@
         android:id="@+id/sepetFragment"
         android:name="com.example.bitirmeprojesi.ui.fragment.SepetFragment"
         android:label="SepetFragment"
-        tools:layout="@layout/fragment_sepet"/>
+        tools:layout="@layout/fragment_sepet">
+        <action
+            android:id="@+id/odemeGecis"
+            app:destination="@id/odemeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/hesapFragment"
         android:name="com.example.bitirmeprojesi.ui.fragment.HesapFragment"
         android:label="HesapFragment"
         tools:layout="@layout/fragment_hesap"/>
+    <fragment
+        android:id="@+id/odemeFragment"
+        android:name="com.example.bitirmeprojesi.ui.fragment.OdemeFragment"
+        android:label="fragment_odeme"
+        tools:layout="@layout/fragment_odeme" >
+        <argument
+            android:name="sepet"
+            app:argType="com.example.bitirmeprojesi.data.entity.Odeme" />
+    </fragment>
 
 </navigation>
